@@ -20,35 +20,48 @@ import AddIcon from '@material-ui/icons/Add'
 // Components:
 import SideBarOption from './SideBarOption'
 
+// Firebase:
+import { db } from "../firebase"
+
+// React Firebase Hooks:
+import { useCollection } from "react-firebase-hooks/firestore"
+
 function SideBar() {
-  return (
-    <SideBarContainer>
-        <SideBarHeader>
-            <SideBarInfo>
-                <h2>FELPs Workspace</h2>
-                <h3>
-                    <FiberManualRecordIcon />
-                    Pablo FELPs
-                </h3>
-            </SideBarInfo>
-            <CreateIcon />
-        </SideBarHeader>
+    const [channels, loading, error] = useCollection(db.collection("rooms"))
 
-        <SideBarOption Icon={InsertCommentIcon} title="Threads" />
-        <SideBarOption Icon={InboxIcon} title="Mentions & Reactions" />
-        <SideBarOption Icon={DraftsIcon} title="Saved Items" />
-        <SideBarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
-        <SideBarOption Icon={PeopleAltIcon} title="People & User Groups" />
-        <SideBarOption Icon={AppsIcon} title="Apps" />
-        <SideBarOption Icon={FileCopyIcon} title="File Browser" />
-        <SideBarOption Icon={ExpandLessIcon} title="Show Less" />
-        <hr />
-        <SideBarOption Icon={ExpandMoreIcon} title="Channels" />
-        <hr />
-        <SideBarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+    //console.log(channels)
 
-    </SideBarContainer>
-  )
+    return (
+        <SideBarContainer>
+            <SideBarHeader>
+                <SideBarInfo>
+                    <h2>FELPs Workspace</h2>
+                    <h3>
+                        <FiberManualRecordIcon />
+                        Pablo FELPs
+                    </h3>
+                </SideBarInfo>
+                <CreateIcon />
+            </SideBarHeader>
+
+            <SideBarOption Icon={InsertCommentIcon} title="Threads" />
+            <SideBarOption Icon={InboxIcon} title="Mentions & Reactions" />
+            <SideBarOption Icon={DraftsIcon} title="Saved Items" />
+            <SideBarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
+            <SideBarOption Icon={PeopleAltIcon} title="People & User Groups" />
+            <SideBarOption Icon={AppsIcon} title="Apps" />
+            <SideBarOption Icon={FileCopyIcon} title="File Browser" />
+            <SideBarOption Icon={ExpandLessIcon} title="Show Less" />
+            <hr />
+            <SideBarOption Icon={ExpandMoreIcon} title="Channels" />
+            <hr />
+            <SideBarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+
+            {channels?.docs.map((doc) => (
+                <SideBarOption key={doc.id} id={doc.id} title={doc.data().name} />
+            ))}
+        </SideBarContainer>
+    )
 }
 
 export default SideBar
