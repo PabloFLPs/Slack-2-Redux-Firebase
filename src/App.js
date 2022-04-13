@@ -10,17 +10,30 @@ import {
 
 // Components:
 import Header from './components/Header';
+import SideBar from './components/SideBar';
+
+// Styled-components:
+import styled from "styled-components"
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="/" exact element={<Header />}/>
-        </Routes>
+        <Header />
+        <AppBody>
+          <SideBar />
+          <Routes>
+            <Route path="/" exact element={<></>}/>
+          </Routes>
+        </AppBody>
       </Router>
     </div>
   );
 }
 
 export default App
+
+const AppBody = styled.div`
+  display: flex;
+  height: 100vh;
+`
