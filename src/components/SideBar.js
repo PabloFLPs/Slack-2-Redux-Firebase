@@ -45,7 +45,7 @@ function SideBar() {
         <hr />
         <SideBarOption Icon={ExpandMoreIcon} title="Channels" />
         <hr />
-        <SideBarOption Icon={AddIcon} title="Add Channel" />
+        <SideBarOption Icon={AddIcon} addChannelOption title="Add Channel" />
 
     </SideBarContainer>
   )
@@ -60,6 +60,12 @@ const SideBarContainer = styled.div`
     border-top: 1px solid #49274b;
     max-width: 260px;
     margin-top: 60px;
+
+    > hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #49274b;
+    }
 `
 
 const SideBarHeader = styled.div`
