@@ -19,7 +19,11 @@ function Header() {
     return (
         <HeaderContainer>
             <HeaderLeft>
-                <HeaderAvatar src={user?.photoURL} alt={user?.displayName} onClick={() => auth.signOut()} />
+                <HeaderAvatar src={user?.photoURL} alt={user?.displayName} />
+                <HeaderSignOut>
+                    <h3>{user?.displayName}</h3>
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                </HeaderSignOut>
                 <AccessTimeIcon />
             </HeaderLeft>
 
@@ -60,32 +64,42 @@ const HeaderLeft = styled.div`
     }
 `
 
-const HeaderAvatar = styled(Avatar)`
-    cursor: pointer;
+const HeaderSignOut = styled.div`
+    padding-left: 14px;
 
-    :hover {
-        opacity: 0.8;
+    > span {
+        font-size: 12px;
+        color: white;
+
+        :hover {
+            opacity: 0.8;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
+`
+
+const HeaderAvatar = styled(Avatar)`
+
 `
 
 const HeaderSearch = styled.div`
     flex: 0.4;
     opacity: 1;
     border-radius: 6px;
-    background-color: #421f44;
+    background-color: white;
     text-align: center;
     display: flex;
-    padding: 0 50px;
+    padding: 0 20px;
     color: gray;
     border: 1px gray solid;
 
     > input {
         background-color: transparent;
         border: none;
-        text-align: center;
-        min-width: 30vw;
+        min-width: 36vw;
         outline: 0;
-        color: white;
+        color: black;
     }
 `
 
