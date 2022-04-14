@@ -47,7 +47,7 @@ const HeaderContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 8px 0;
     background-color: var(--slack-color);
     color: white;
 `
@@ -65,16 +65,19 @@ const HeaderLeft = styled.div`
 `
 
 const HeaderSignOut = styled.div`
-    padding-left: 14px;
+    padding-left: 16px;
+    padding-bottom: 4px;
 
     > span {
-        font-size: 12px;
+        font-size: 14px;
         color: white;
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+        transition: all 400ms;
 
         :hover {
             opacity: 0.8;
-            cursor: pointer;
-            text-decoration: underline;
+            border-bottom: 1px solid white;
         }
     }
 `
