@@ -60,7 +60,7 @@ const SideBarOptionContainer = styled.div`
     }
 
     > h3 > span {
-        padding: 15px;
+        padding-left: 40px;
     }
 `
 
