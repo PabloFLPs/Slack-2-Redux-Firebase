@@ -41,7 +41,7 @@ function Chat() {
         chatReference?.current?.scrollIntoView({
             behavior: "smooth",
         })
-    }, [roomId, loading])
+    }, [roomId, roomMessages, loading])
 
     return (
         <ChatContainer>
@@ -68,7 +68,7 @@ function Chat() {
                                 <Message key={doc.id} message={message} timestamp={timestamp} user={user} userImage={userImage} />
                             )
                         })}
-                        <ChatBotoom ref={chatReference} />
+                        <ChatBottom ref={chatReference} />
                     </ChatMessages>
                     <ChatInput channelId={roomId} channelName={channelName} chatReference={chatReference} />
                 </>
@@ -89,7 +89,7 @@ const ChatContainer = styled.div `
 const Header = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 22.5px;
     border-bottom: 1px solid lightgray;
 `
 
@@ -122,10 +122,9 @@ const HeaderRight = styled.div`
 `
 
 const ChatMessages = styled.div`
-
+    
 `
 
-const ChatBotoom = styled.div`
-    padding-bottom: 200px;
-
+const ChatBottom = styled.div`
+    padding-bottom: 100px;
 `
