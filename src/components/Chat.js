@@ -83,13 +83,13 @@ const ChatContainer = styled.div `
     flex: 0.7;
     flex-grow: 1;
     overflow-y: scroll;
-    margin-top: 60px;
+    margin-top: 66px;
 `
 
 const Header = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 22.5px;
+    padding: 22px;
     border-bottom: 1px solid lightgray;
 `
 
