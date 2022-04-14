@@ -26,8 +26,14 @@ import { db } from "../firebase"
 // React Firebase Hooks:
 import { useCollection } from "react-firebase-hooks/firestore"
 
+// Firebase Auth:
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 function SideBar() {
     const [channels, loading, error] = useCollection(db.collection("rooms"))
+
+    const [user] = useAuthState(auth)
 
     //console.log(channels)
 
@@ -38,7 +44,7 @@ function SideBar() {
                     <h2>FELPs Workspace</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Pablo FELPs
+                        {user?.displayName}
                     </h3>
                 </SideBarInfo>
                 <CreateIcon />
@@ -88,11 +94,18 @@ const SideBarHeader = styled.div`
     padding: 13px;
 
     > .MuiSvgIcon-root {
-        padding: 8px;
+        padding: 5px;
         color: #49274b;
+        cursor: pointer;
         font-size: 18px;
+        margin-top: 8px;
         background-color: white;
         border-radius: 999px;
+        transition: all 400ms;
+
+        :hover {
+            opacity: 0.8;
+        }
     }
 `
 
