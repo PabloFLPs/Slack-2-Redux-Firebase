@@ -11,6 +11,7 @@ import {
 // Components:
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import Chat from './components/Chat';
 
 // Styled-components:
 import styled from "styled-components"
@@ -22,6 +23,7 @@ function App() {
         <Header />
         <AppBody>
           <SideBar />
+          <Chat />
           <Routes>
             <Route path="/" exact element={<></>}/>
           </Routes>
