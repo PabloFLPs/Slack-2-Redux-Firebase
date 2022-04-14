@@ -22,7 +22,10 @@ function Login() {
             <LoginInnerContainer>
                 <img src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg" alt="Slack Icon" />
                 <h1>Sign in to the FELPs Slack</h1>
-                <p>felps.slack.com</p>
+                <p>
+                    <span>Check out my </span>
+                    <a href="https://github.com/PabloFLPs" target="_blank">Github</a>
+                </p>
                 <Button onClick={signIn}>Sign in with Google</Button>
             </LoginInnerContainer>
         </LoginContainer>
@@ -51,10 +54,28 @@ const LoginInnerContainer = styled.div`
         margin-bottom: 40px;
     }
 
+    > p > a {
+        color: black;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 400ms;
+
+        :hover {
+            color: green;
+            border-bottom: 1px solid green;
+        }
+    }
+
     > button {
+        padding: 8px 20px;
         margin-top: 50px;
         text-transform: inherit !important;
         background-color: #0a8d48 !important;
         color: white;
+        transition: all 400ms;
+
+        :hover {
+            opacity: 0.8;
+        }
     }
 `
