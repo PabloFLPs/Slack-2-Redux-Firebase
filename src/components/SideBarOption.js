@@ -22,9 +22,13 @@ function SideBarOption({ id, Icon, title, addChannelOption }) {
     }
 
     const selectChannel = () => {
-        if (id) dispatch(enterRoom({
-            roomId: id
-        }))
+        const channelCode = prompt("Please enter the channel code: ")
+
+        // Removing emojis from channel name:
+        const noEmojiChannelTitle = title.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
+        const noEmojiChannelCode = channelCode.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '')
+        
+        return (noEmojiChannelTitle == noEmojiChannelCode) ? id && dispatch(enterRoom({ roomId: id })) : alert("Passcode incorrect!")
     }
 
     return (
